@@ -1,0 +1,19 @@
+analysis,model,n_val,events_val,auroc,auroc_lo,auroc_hi,average_precision,brier,brier_lo,brier_hi,calibration_intercept,calibration_slope,slope_lo,slope_hi
+Primary outcome (MASLD),logistic,4103,2265,0.698,0.69,0.706,0.729,0.218,0.216,0.221,0.027,0.838,0.792,0.884
+Primary outcome (MASLD),gbm,4103,2265,0.721,0.713,0.729,0.743,0.211,0.208,0.214,0.044,0.891,0.854,0.928
+Steatosis alone (CAP >=248),logistic,4103,2296,0.696,,,0.735,0.218,,,0.037,0.856,,
+Steatosis alone (CAP >=248),gbm,4103,2296,0.719,,,0.748,0.211,,,0.058,0.904,,
+MASLD with significant fibrosis (LSM >=8 kPa),logistic,4103,390,0.675,,,0.202,0.08,,,0.307,0.649,,
+MASLD with significant fibrosis (LSM >=8 kPa),gbm,4103,390,0.697,,,0.203,0.079,,,0.349,0.68,,
+MASLD at CAP >=285 dB/m,logistic,4103,1421,0.702,,,0.528,0.202,,,0.006,0.73,,
+MASLD at CAP >=285 dB/m,gbm,4103,1421,0.737,,,0.561,0.191,,,0.024,0.957,,
+MASLD by Fatty Liver Index >=60,logistic,2150,971,0.792,,,0.74,0.187,,,0.129,0.936,,
+MASLD by Fatty Liver Index >=60,gbm,2150,971,0.808,,,0.756,0.179,,,0.168,1.07,,
+Criterion-containing predictor set,logistic,4103,2265,0.853,,,0.866,0.154,,,-0.054,0.961,,
+Criterion-containing predictor set,gbm,4103,2265,0.853,,,0.867,0.154,,,-0.04,1.012,,
+Routine-clinical predictor set,logistic,4103,2265,0.831,,,0.847,0.167,,,0.023,0.942,,
+Routine-clinical predictor set,gbm,4103,2265,0.833,,,0.848,0.165,,,0.018,0.988,,
+Complete-case analysis,logistic,3898,2151,0.698,,,0.73,0.218,,,0.026,0.827,,
+Complete-case analysis,gbm,3898,2151,0.723,,,0.744,0.21,,,0.044,0.899,,
+Unweighted analysis,logistic,4103,2265,0.693,,,0.726,0.221,,,-0.107,1.021,,
+Unweighted analysis,gbm,4103,2265,0.725,,,0.749,0.209,,,-0.069,1.075,,

@@ -1,0 +1,403 @@
+{
+  "n_dev": 6320,
+  "n_val": 4103,
+  "events_dev": 3709,
+  "events_val": 2265,
+  "best_lr_C": 0.01,
+  "best_lr_cv_brier": 0.2089600043444328,
+  "best_gbm": {
+    "max_leaf_nodes": 7,
+    "learning_rate": 0.05,
+    "max_iter": 100,
+    "l2_regularization": 1.0,
+    "cv_brier": 0.20020128728802625
+  },
+  "benchmark_brier": 0.2480445691191902,
+  "seed": 1729,
+  "n_boot": 1500,
+  "validation": {
+    "logistic": {
+      "auroc": 0.6980950615443442,
+      "average_precision": 0.7293974981635192,
+      "brier": 0.21842465392940477,
+      "calibration_intercept": 0.026821712463037953,
+      "calibration_slope": 0.8377096149294767,
+      "mean_predicted": 0.5426337878562167,
+      "observed": 0.548288565849231,
+      "ci95": {
+        "auroc": [
+          0.689885707153453,
+          0.7061610286583296
+        ],
+        "average_precision": [
+          0.7217939825643149,
+          0.7371559495555824
+        ],
+        "brier": [
+          0.21604319965573138,
+          0.22092060924387347
+        ],
+        "calibration_intercept": [
+          0.0032720077399049827,
+          0.050714947831347654
+        ],
+        "calibration_slope": [
+          0.7917992907549319,
+          0.8839306046775851
+        ]
+      }
+    },
+    "gbm": {
+      "auroc": 0.7211220476935697,
+      "average_precision": 0.7432423109982862,
+      "brier": 0.21120367714465707,
+      "calibration_intercept": 0.0437058521621229,
+      "calibration_slope": 0.8914784239659312,
+      "mean_predicted": 0.5394052705599645,
+      "observed": 0.548288565849231,
+      "ci95": {
+        "auroc": [
+          0.7129347992047411,
+          0.7292426409856786
+        ],
+        "average_precision": [
+          0.7353330686125774,
+          0.7512775214647347
+        ],
+        "brier": [
+          0.20849905284490997,
+          0.2138947130243101
+        ],
+        "calibration_intercept": [
+          0.01758848107078202,
+          0.07025662945836805
+        ],
+        "calibration_slope": [
+          0.8540540836684904,
+          0.9279036028017088
+        ]
+      }
+    }
+  },
+  "thresholds": {
+    "logistic": {
+      "youden": {
+        "threshold": 0.5021965740503475,
+        "sensitivity": 0.7227546001457438,
+        "specificity": 0.5681488724482073,
+        "ppv": 0.670124233828805,
+        "npv": 0.628017746487002,
+        "rule": "Youden J",
+        "ci95": {
+          "sensitivity": [
+            0.7101990644192933,
+            0.735615094689437
+          ],
+          "specificity": [
+            0.552890211583514,
+            0.5829203188991763
+          ],
+          "ppv": [
+            0.6628707721703173,
+            0.6771625139061123
+          ],
+          "npv": [
+            0.6145660563770207,
+            0.6412296870737861
+          ]
+        }
+      },
+      "sens90": {
+        "threshold": 0.3566389388945037,
+        "sensitivity": 0.9015752547838828,
+        "specificity": 0.313241636208255,
+        "ppv": 0.6144174285905744,
+        "npv": 0.7239068615129669,
+        "rule": "90% sensitivity",
+        "ci95": {
+          "sensitivity": [
+            0.8936653912432501,
+            0.9094194815540111
+          ],
+          "specificity": [
+            0.2973767663948004,
+            0.32829975955157603
+          ],
+          "ppv": [
+            0.606598987606749,
+            0.622358767619669
+          ],
+          "npv": [
+            0.7050843804211804,
+            0.7418361497111953
+          ]
+        }
+      }
+    },
+    "gbm": {
+      "youden": {
+        "threshold": 0.5112218897760118,
+        "sensitivity": 0.7192468169189059,
+        "specificity": 0.6059908238494468,
+        "ppv": 0.6890300393451322,
+        "npv": 0.6400614212231163,
+        "rule": "Youden J",
+        "ci95": {
+          "sensitivity": [
+            0.7087934437442016,
+            0.7296140119292616
+          ],
+          "specificity": [
+            0.5925254038792278,
+            0.6191654046879085
+          ],
+          "ppv": [
+            0.6813662963543847,
+            0.6961925356996237
+          ],
+          "npv": [
+            0.6287775429107882,
+            0.6509584793360421
+          ]
+        }
+      },
+      "sens90": {
+        "threshold": 0.34180146274411877,
+        "sensitivity": 0.9002828075711411,
+        "specificity": 0.36706332790890983,
+        "ppv": 0.6332295325511078,
+        "npv": 0.7520243434253957,
+        "rule": "90% sensitivity",
+        "ci95": {
+          "sensitivity": [
+            0.8932076710370227,
+            0.907517458711666
+          ],
+          "specificity": [
+            0.35262773254922086,
+            0.3801141930153221
+          ],
+          "ppv": [
+            0.6264036476547893,
+            0.6402426821391829
+          ],
+          "npv": [
+            0.7372484490677348,
+            0.7672269156903395
+          ]
+        }
+      }
+    }
+  },
+  "logistic_intercept": -0.11053182231886019,
+  "variants": [
+    {
+      "label": "Steatosis alone (CAP >=248)",
+      "note": "",
+      "n_dev": 6320,
+      "n_val": 4103,
+      "events_dev": 3743,
+      "events_val": 2296,
+      "logistic": {
+        "auroc": 0.6956571700696188,
+        "average_precision": 0.7345352604945783,
+        "brier": 0.21814197631115317,
+        "calibration_intercept": 0.03742677182148652,
+        "calibration_slope": 0.8558696903351826,
+        "mean_predicted": 0.5497756311786458,
+        "observed": 0.5577028283874598
+      },
+      "gbm": {
+        "auroc": 0.7191218249293188,
+        "average_precision": 0.748496797329548,
+        "brier": 0.2110461684400606,
+        "calibration_intercept": 0.05799587240260217,
+        "calibration_slope": 0.9036890959322996,
+        "mean_predicted": 0.5458479019629161,
+        "observed": 0.5577028283874598
+      }
+    },
+    {
+      "label": "MASLD with significant fibrosis (LSM >=8 kPa)",
+      "note": "",
+      "n_dev": 6320,
+      "n_val": 4103,
+      "events_dev": 522,
+      "events_val": 390,
+      "logistic": {
+        "auroc": 0.67484906648446,
+        "average_precision": 0.2021492134927122,
+        "brier": 0.07953032159229675,
+        "calibration_intercept": 0.30685252168233945,
+        "calibration_slope": 0.6491410272906817,
+        "mean_predicted": 0.0700654128808097,
+        "observed": 0.09056420697074183
+      },
+      "gbm": {
+        "auroc": 0.6968398103584681,
+        "average_precision": 0.20258549243038781,
+        "brier": 0.07904298176469068,
+        "calibration_intercept": 0.34877660740154387,
+        "calibration_slope": 0.6796517713970973,
+        "mean_predicted": 0.06790791411006253,
+        "observed": 0.09056420697074183
+      }
+    },
+    {
+      "label": "MASLD at CAP >=285 dB/m",
+      "note": "",
+      "n_dev": 6320,
+      "n_val": 4103,
+      "events_dev": 2380,
+      "events_val": 1421,
+      "logistic": {
+        "auroc": 0.7016600217677389,
+        "average_precision": 0.5283394696328623,
+        "brier": 0.2020216793900064,
+        "calibration_intercept": 0.005910614829707879,
+        "calibration_slope": 0.7297900154509118,
+        "mean_predicted": 0.3405776857202103,
+        "observed": 0.3417060003063634
+      },
+      "gbm": {
+        "auroc": 0.7365882469056527,
+        "average_precision": 0.561470959384448,
+        "brier": 0.19128976201924433,
+        "calibration_intercept": 0.024166784890777393,
+        "calibration_slope": 0.9566970283631233,
+        "mean_predicted": 0.3371836680215825,
+        "observed": 0.3417060003063634
+      }
+    },
+    {
+      "label": "MASLD by Fatty Liver Index >=60",
+      "note": "fasting subsample only",
+      "n_dev": 3071,
+      "n_val": 2150,
+      "events_dev": 1382,
+      "events_val": 971,
+      "logistic": {
+        "auroc": 0.7921033322344391,
+        "average_precision": 0.7403455684187632,
+        "brier": 0.18668213133818465,
+        "calibration_intercept": 0.12921152205255032,
+        "calibration_slope": 0.9363954396172343,
+        "mean_predicted": 0.41396896531924665,
+        "observed": 0.4379940037906478
+      },
+      "gbm": {
+        "auroc": 0.8078726036707398,
+        "average_precision": 0.7563674001934224,
+        "brier": 0.17851968638360452,
+        "calibration_intercept": 0.16825474492826784,
+        "calibration_slope": 1.07007603031597,
+        "mean_predicted": 0.40750745172290637,
+        "observed": 0.4379940037906478
+      }
+    },
+    {
+      "label": "Criterion-containing predictor set",
+      "note": "adds BMI, waist, HbA1c, triglycerides, HDL, systolic BP",
+      "n_dev": 6320,
+      "n_val": 4103,
+      "events_dev": 3709,
+      "events_val": 2265,
+      "logistic": {
+        "auroc": 0.8533737675967921,
+        "average_precision": 0.8661893478967362,
+        "brier": 0.15426979060502063,
+        "calibration_intercept": -0.05396375019177856,
+        "calibration_slope": 0.9605789534168434,
+        "mean_predicted": 0.5564417877030186,
+        "observed": 0.548288565849231
+      },
+      "gbm": {
+        "auroc": 0.8532358556597959,
+        "average_precision": 0.8673604547009233,
+        "brier": 0.15413335246267953,
+        "calibration_intercept": -0.03997614914840841,
+        "calibration_slope": 1.0116883947566526,
+        "mean_predicted": 0.554439123819251,
+        "observed": 0.548288565849231
+      }
+    },
+    {
+      "label": "Routine-clinical predictor set",
+      "note": "adds BMI and systolic BP only (no fasting labs)",
+      "n_dev": 6320,
+      "n_val": 4103,
+      "events_dev": 3709,
+      "events_val": 2265,
+      "logistic": {
+        "auroc": 0.8306281194779044,
+        "average_precision": 0.8467151633674732,
+        "brier": 0.16676251268343098,
+        "calibration_intercept": 0.02296349629841596,
+        "calibration_slope": 0.9418965171785958,
+        "mean_predicted": 0.5445679394392511,
+        "observed": 0.548288565849231
+      },
+      "gbm": {
+        "auroc": 0.8334752888445667,
+        "average_precision": 0.8484744620495808,
+        "brier": 0.1649194709947325,
+        "calibration_intercept": 0.017671396300603413,
+        "calibration_slope": 0.9884358119157282,
+        "mean_predicted": 0.5454148381854702,
+        "observed": 0.548288565849231
+      }
+    },
+    {
+      "label": "Complete-case analysis",
+      "note": "",
+      "n_dev": 6198,
+      "n_val": 3898,
+      "events_dev": 3645,
+      "events_val": 2151,
+      "logistic": {
+        "auroc": 0.6978394695910832,
+        "average_precision": 0.7302977507106394,
+        "brier": 0.21843132173957416,
+        "calibration_intercept": 0.026293488918714983,
+        "calibration_slope": 0.8265794092949439,
+        "mean_predicted": 0.5443485255795154,
+        "observed": 0.5498693648065508
+      },
+      "gbm": {
+        "auroc": 0.7226317433397262,
+        "average_precision": 0.7442618716833957,
+        "brier": 0.21041122420919345,
+        "calibration_intercept": 0.04413510866033736,
+        "calibration_slope": 0.8988280970298943,
+        "mean_predicted": 0.5409125568880238,
+        "observed": 0.5498693648065508
+      }
+    },
+    {
+      "label": "Unweighted analysis",
+      "note": "",
+      "n_dev": 6320,
+      "n_val": 4103,
+      "events_dev": 3709,
+      "events_val": 2265,
+      "logistic": {
+        "auroc": 0.6926991378958316,
+        "average_precision": 0.7257609365524222,
+        "brier": 0.22085935552862687,
+        "calibration_intercept": -0.10663515062887687,
+        "calibration_slope": 1.0208117760776765,
+        "mean_predicted": 0.5756627089055334,
+        "observed": 0.5520350962710212
+      },
+      "gbm": {
+        "auroc": 0.7254604174323276,
+        "average_precision": 0.7489986793424257,
+        "brier": 0.20927294854472633,
+        "calibration_intercept": -0.0686334023957704,
+        "calibration_slope": 1.0753806523557035,
+        "mean_predicted": 0.5665938354416699,
+        "observed": 0.5520350962710212
+      }
+    }
+  ]
+}

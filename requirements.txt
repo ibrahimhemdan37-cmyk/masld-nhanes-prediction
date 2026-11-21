@@ -1,0 +1,8 @@
+pandas==3.1.1
+numpy==2.5.5
+scipy==1.18.1
+scikit-learn==1.9.1
+matplotlib
+python-docx
+lxml
+pydeseq2==0.6.0  # transcriptomics only (DESeq2 method in Python)

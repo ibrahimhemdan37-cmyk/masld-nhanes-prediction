@@ -1,0 +1,94 @@
+survey_release,variable,n,n_available,n_missing,pct_missing
+All releases,age_years,10423,10423,0,0.0
+All releases,sex,10423,10423,0,0.0
+All releases,race_ethnicity,10423,10423,0,0.0
+All releases,smoking_status,10423,10415,8,0.08
+All releases,education,10423,10416,7,0.07
+All releases,mvpa_min_per_week,10423,10372,51,0.49
+All releases,total_cholesterol_mg_dl,10423,10271,152,1.46
+All releases,alt_u_l,10423,10195,228,2.19
+All releases,ast_u_l,10423,10164,259,2.48
+All releases,ggt_u_l,10423,10196,227,2.18
+All releases,waist_cm,10423,10231,192,1.84
+All releases,bmi_kg_m2,10423,10374,49,0.47
+All releases,hba1c_pct,10423,10412,11,0.11
+All releases,triglycerides_mg_dl,10423,5371,5052,48.47
+All releases,hdl_cholesterol_mg_dl,10423,10271,152,1.46
+All releases,mean_systolic_bp_mm_hg,10423,9967,456,4.37
+All releases,mean_diastolic_bp_mm_hg,10423,9967,456,4.37
+All releases,poverty_income_ratio,10423,9152,1271,12.19
+All releases,uric_acid_mg_dl,10423,10196,227,2.18
+All releases,fatty_liver_index,10423,5221,5202,49.91
+All releases,cap_db_m,10423,10423,0,0.0
+All releases,liver_stiffness_kpa,10423,10423,0,0.0
+All releases,steatosis,10423,10423,0,0.0
+All releases,masld,10423,10423,0,0.0
+All releases,masld_with_significant_fibrosis,10423,10423,0,0.0
+All releases,fli_ge_60,10423,5221,5202,49.91
+All releases,criterion_adiposity,10423,10397,26,0.25
+All releases,criterion_hyperglycaemia,10423,10423,0,0.0
+All releases,criterion_hypertension,10423,10307,116,1.11
+All releases,criterion_hypertriglyceridaemia,10423,9808,615,5.9
+All releases,criterion_low_hdl,10423,9981,442,4.24
+2017-March2020,age_years,6320,6320,0,0.0
+2017-March2020,sex,6320,6320,0,0.0
+2017-March2020,race_ethnicity,6320,6320,0,0.0
+2017-March2020,smoking_status,6320,6317,3,0.05
+2017-March2020,education,6320,6313,7,0.11
+2017-March2020,mvpa_min_per_week,6320,6309,11,0.17
+2017-March2020,total_cholesterol_mg_dl,6320,6284,36,0.57
+2017-March2020,alt_u_l,6320,6248,72,1.14
+2017-March2020,ast_u_l,6320,6223,97,1.53
+2017-March2020,ggt_u_l,6320,6248,72,1.14
+2017-March2020,waist_cm,6320,6191,129,2.04
+2017-March2020,bmi_kg_m2,6320,6286,34,0.54
+2017-March2020,hba1c_pct,6320,6312,8,0.13
+2017-March2020,triglycerides_mg_dl,6320,3160,3160,50.0
+2017-March2020,hdl_cholesterol_mg_dl,6320,6284,36,0.57
+2017-March2020,mean_systolic_bp_mm_hg,6320,5902,418,6.61
+2017-March2020,mean_diastolic_bp_mm_hg,6320,5902,418,6.61
+2017-March2020,poverty_income_ratio,6320,5530,790,12.5
+2017-March2020,uric_acid_mg_dl,6320,6248,72,1.14
+2017-March2020,fatty_liver_index,6320,3071,3249,51.41
+2017-March2020,cap_db_m,6320,6320,0,0.0
+2017-March2020,liver_stiffness_kpa,6320,6320,0,0.0
+2017-March2020,steatosis,6320,6320,0,0.0
+2017-March2020,masld,6320,6320,0,0.0
+2017-March2020,masld_with_significant_fibrosis,6320,6320,0,0.0
+2017-March2020,fli_ge_60,6320,3071,3249,51.41
+2017-March2020,criterion_adiposity,6320,6298,22,0.35
+2017-March2020,criterion_hyperglycaemia,6320,6320,0,0.0
+2017-March2020,criterion_hypertension,6320,6205,115,1.82
+2017-March2020,criterion_hypertriglyceridaemia,6320,5709,611,9.67
+2017-March2020,criterion_low_hdl,6320,5882,438,6.93
+2021-2023,age_years,4103,4103,0,0.0
+2021-2023,sex,4103,4103,0,0.0
+2021-2023,race_ethnicity,4103,4103,0,0.0
+2021-2023,smoking_status,4103,4098,5,0.12
+2021-2023,education,4103,4103,0,0.0
+2021-2023,mvpa_min_per_week,4103,4063,40,0.97
+2021-2023,total_cholesterol_mg_dl,4103,3987,116,2.83
+2021-2023,alt_u_l,4103,3947,156,3.8
+2021-2023,ast_u_l,4103,3941,162,3.95
+2021-2023,ggt_u_l,4103,3948,155,3.78
+2021-2023,waist_cm,4103,4040,63,1.54
+2021-2023,bmi_kg_m2,4103,4088,15,0.37
+2021-2023,hba1c_pct,4103,4100,3,0.07
+2021-2023,triglycerides_mg_dl,4103,2211,1892,46.11
+2021-2023,hdl_cholesterol_mg_dl,4103,3987,116,2.83
+2021-2023,mean_systolic_bp_mm_hg,4103,4065,38,0.93
+2021-2023,mean_diastolic_bp_mm_hg,4103,4065,38,0.93
+2021-2023,poverty_income_ratio,4103,3622,481,11.72
+2021-2023,uric_acid_mg_dl,4103,3948,155,3.78
+2021-2023,fatty_liver_index,4103,2150,1953,47.6
+2021-2023,cap_db_m,4103,4103,0,0.0
+2021-2023,liver_stiffness_kpa,4103,4103,0,0.0
+2021-2023,steatosis,4103,4103,0,0.0
+2021-2023,masld,4103,4103,0,0.0
+2021-2023,masld_with_significant_fibrosis,4103,4103,0,0.0
+2021-2023,fli_ge_60,4103,2150,1953,47.6
+2021-2023,criterion_adiposity,4103,4099,4,0.1
+2021-2023,criterion_hyperglycaemia,4103,4103,0,0.0
+2021-2023,criterion_hypertension,4103,4102,1,0.02
+2021-2023,criterion_hypertriglyceridaemia,4103,4099,4,0.1
+2021-2023,criterion_low_hdl,4103,4099,4,0.1

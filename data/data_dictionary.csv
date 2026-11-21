@@ -1,0 +1,46 @@
+variable,description,source
+seqn,Respondent sequence number,All files
+survey_release,NHANES release (development 2017-March2020; validation 2021-2023),DEMO
+sdmvstra,Masked variance pseudo-stratum,DEMO
+sdmvpsu,Masked variance pseudo-PSU,DEMO
+mec_weight_original,MEC examination weight as released (WTMECPRP or WTMEC2YR),DEMO
+mec_weight_pooled,MEC weight rescaled by release years / 5.2,Derived
+cap_db_m,"Controlled attenuation parameter, median (dB/m)",LUX
+liver_stiffness_kpa,"Liver stiffness, median (kPa)",LUX
+steatosis,CAP >= 248 dB/m,Derived
+masld,"MASLD: steatosis + >=1 cardiometabolic criterion, alcohol within limits, no viral hepatitis",Derived
+masld_with_significant_fibrosis,MASLD and liver stiffness >= 8.0 kPa,Derived
+fli_ge_60,Fatty Liver Index >= 60 (sensitivity outcome; fasting subsample only),Derived
+criterion_adiposity,BMI >=25 (>=23 Asian) or waist >94 cm men / >80 cm women,Derived
+criterion_hyperglycaemia,Fasting glucose >=100 mg/dL or HbA1c >=5.7% or diabetes,Derived
+criterion_hypertension,BP >=130/85 mmHg or antihypertensive treatment,Derived
+criterion_hypertriglyceridaemia,Triglycerides >=150 mg/dL or lipid-lowering treatment,Derived
+criterion_low_hdl,HDL <=40 mg/dL men / <=50 mg/dL women or lipid-lowering treatment,Derived
+n_metabolic_criteria_met,Number of the five criteria met (0-5),Derived
+n_metabolic_criteria_known,Number of the five criteria determinable (0-5),Derived
+age_years,Age at examination (top-coded at 80),DEMO
+sex,Male / Female,DEMO
+race_ethnicity,Race/Hispanic origin (RIDRETH3),DEMO
+smoking_status,"Never / Former / Current (SMQ020, SMQ040)",SMQ
+education,Highest education (DMDEDUC2),DEMO
+mvpa_min_per_week,"Leisure-time moderate-to-vigorous activity, min/week (GPAQ recreational in 2017-March2020; LTPA in 2021-2023)",PAQ
+total_cholesterol_mg_dl,Total cholesterol (LBXTC),TCHOL
+alt_u_l,Alanine aminotransferase (LBXSATSI),BIOPRO
+ast_u_l,Aspartate aminotransferase (LBXSASSI),BIOPRO
+ggt_u_l,Gamma-glutamyl transferase (LBXSGTSI),BIOPRO
+waist_cm,Waist circumference (BMXWAIST),BMX
+bmi_kg_m2,Body mass index (BMXBMI),BMX
+hba1c_pct,Glycated haemoglobin (LBXGH),GHB
+triglycerides_mg_dl,Triglycerides (LBXTR; fasting subsample only),TRIGLY
+hdl_cholesterol_mg_dl,HDL cholesterol (LBDHDD),HDL
+mean_systolic_bp_mm_hg,Mean systolic BP over readings > 0 mmHg (oscillometric),BPXO
+mean_diastolic_bp_mm_hg,Mean diastolic BP over readings > 0 mmHg (oscillometric),BPXO
+poverty_income_ratio,Family poverty income ratio (INDFMPIR),DEMO
+uric_acid_mg_dl,Uric acid (LBXSUA),BIOPRO
+fatty_liver_index,"Fatty Liver Index, 0-100 (Bedogni et al. 2006)",Derived
+age_top_coded_80_plus,Age top-coded at 80 (1) or not (0),Derived
+bp_protocol,Blood pressure measurement protocol,Derived
+on_antihypertensive,"Taking prescribed antihypertensive medication (BPQ050A / BPQ150; 0 if never told high BP, BPQ020 = 2)",BPQ
+on_lipid_lowering,"Taking prescribed lipid-lowering medication (BPQ100D / BPQ101D; 0 if not told to take it, BPQ080 = 2)",BPQ
+drinks_per_day,"Average alcoholic drinks per day, past 12 months (ALQ130 x ALQ121 frequency / 365; 0 if never drank)",ALQ
+fasting_glucose_mg_dl,Fasting plasma glucose (LBXGLU; fasting subsample only),GLU
