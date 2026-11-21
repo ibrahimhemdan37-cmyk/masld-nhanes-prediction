@@ -80,7 +80,7 @@ enrichment results (`degs.csv`, `degs_secondary_contrasts.csv`,
 - The combined 2017–March 2020 NHANES files cannot be split into
   2017–2018 and 2019–March 2020: the CDC reassigned SEQN in the combined
   release, so the development sample is the combined pre-pandemic sample
-  as released (see the protocol and `data/README.md` in the study records).
+  as released (see `data/README.md`).
 - The value 5.397605347e-79 in the raw XPT files is the SAS numeric value
   0 as read by pandas' XPORT reader; it is restored to 0.0 in the build
   script (see `data/sas_zero_log.csv`).
