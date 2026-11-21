@@ -1,86 +1,104 @@
-# MASLD prediction models — analysis code and data
+# NHANES MASLD cross-sectional cohort
 
-Code and analysis outputs for "Identifying Metabolic Dysfunction-Associated
-Steatotic Liver Disease in US Adults: A Cross-Sectional NHANES Study with
-Temporal Validation and Transcriptomic Context".
+Built by `build_cohort_masld.py` from the NHANES public-use XPT files in
+`../raw/` (downloaded from the CDC on 2026-11-21). Protocol v1.2.
 
-## What is here
+## Design
 
-| File | Purpose |
-| --- | --- |
-| `build_cohort_masld.py` | Builds the analysis cohort from NHANES XPT files (2017–March 2020 development, August 2021–August 2023 temporal validation) |
-| `model_masld.py` | Logistic regression vs histogram gradient boosting; tuning, validation metrics, bootstrap CIs, odds ratios, permutation importance, sensitivity analyses |
-| `make_tables_figs.py` | Table 1 and Figures 1–6 |
-| `build_manuscript.py` | Builds the manuscript docx from the results files |
-| `build_supplement.py` | Builds the supplementary docx (Tables S1–S3, TRIPOD+AI mapping) |
-| `bioinformatics/stage1_build_matrix.py` | Builds the gene count matrix from GEO GSE135251 raw counts |
-| `bioinformatics/stage2b_de_countbased.py` | Differential expression with DESeq2 (PyDESeq2 0.6.0) and KEGG enrichment — supersedes `stage2_de_enrichment.py` (Welch's t-test, kept for reference only) |
-| `bioinformatics/stage3_plots.py` | Volcano and enrichment plots |
-| `data/` | The analysis cohort and all model outputs (see below) |
+* Development sample: NHANES 2017-March 2020 pre-pandemic (P_ files, 3.2 years,
+  MEC weight WTMECPRP).
+* Temporal validation sample: NHANES August 2021-August 2023 (L files, 2.0
+  years, MEC weight WTMEC2YR).
+* Pooled weights are rescaled by release years / 5.2 (3.2/5.2 and 2/5.2).
+* No NHANES data collected after August 2023 had been publicly released.
 
-## Data included in `data/`
+## Why the development sample is not split by cycle
 
-- `nhanes_masld_cross_sectional.csv` — the analysis cohort (10,423 adults, 45 columns)
-- `cohort_flow.csv`, `outcome_summary.csv`, `variable_completeness.csv`,
-  `data_dictionary.csv`, `sas_zero_log.csv`, `source_manifest.csv`
-- `model_results.json`, `metrics_table.csv`, `odds_ratios.csv`,
-  `permutation_importance.csv`, `threshold_metrics.csv`,
-  `tuning_results.csv`, `validation_predictions.csv`, `table1.csv`
+The combined 2017-March 2020 files cannot be split into 2017-2018 and
+2019-March 2020 participants: CDC reassigned SEQN values in the combined
+release (P_DEMO SEQN 109263-124822 versus DEMO_J 93703-102956, zero overlap),
+regenerated the masked variance strata/PSU, and set SDDSRVYR to 66 for every
+row. Verified empirically on 2026-11-21: all 9,254 DEMO_J participants match a
+P_DEMO row on age, sex, race, education and poverty-income ratio, so the
+combined files do contain the 2017-2018 participants, but under new SEQN
+values with no cycle indicator. Protocol v1.1's SEQN-subsetting instruction
+was therefore wrong and is superseded.
 
-## Reproducing the analysis
+## Outcome
 
-### 1. NHANES cohort
+MASLD (Rinella et al. 2023): CAP >= 248 dB/m plus at least one of five
+cardiometabolic criteria, alcohol within limits (<=2 drinks/day women,
+<=3 men), and no viral hepatitis B (HBsAg, LBDHBG = 1) or C (HCV RNA,
+LBXHCR = 1). A reliable exam is LUAXSTAT = 1 (fasted >= 3 h, >= 10 complete
+stiffness measures, liver stiffness IQR/median < 30%).
 
-Download the 51 NHANES XPT files listed in `data/source_manifest.csv`
-(CDC, https://www.cdc.gov/nchs/nhanes/) into a `raw/` folder next to the
-scripts, with the cycle subfolders `2017-2018/`, `2019-March2020/` and
-`2021-2023/`, then run:
+Metabolic criteria are each recorded as met (1), not met (0) or undetermined
+(missing). A participant is excluded for missing metabolic data only if no
+criterion is met AND at least one criterion is undetermined: anyone with
+>= 1 criterion met is classifiable regardless of missing components. This
+matters because triglycerides (and fasting glucose) are measured only in the
+morning fasting subsample, so requiring all five criteria to be known would
+discard about half the cohort.
 
-```bash
-python build_cohort_masld.py
-```
+## Predictors (primary set, 10)
 
-Outputs are written next to the script.
+Age, sex, race/Hispanic origin, smoking status, education, leisure-time
+moderate-to-vigorous physical activity (minutes/week), total cholesterol,
+ALT, AST, GGT. Physical activity is leisure-time only, for comparability
+across cycles: 2017-March 2020 uses the GPAQ recreational items (vigorous
+days x minutes/day + moderate days x minutes/day); 2021-2023 uses the
+leisure-time items (frequency per day/week/month/year x minutes per session,
+separately for moderate and vigorous activity). No outcome-defining variable
+(BMI, waist, blood pressure, glucose, HbA1c, triglycerides, HDL, diabetes
+status) is among the predictors.
 
-### 2. Modelling
+## Data fixes applied
 
-```bash
-python model_masld.py
-```
+* The value 5.397605347e-79 (= 2^-260) in these files is a SAS zero misread
+  by pandas' XPORT reader, not a missing-value code: codebook counts prove
+  it (ALQ121 code 0, "Never in the last year", n = 1,049, exactly equals the
+  number of 2^-260 values in ALQ121). Such values are restored to 0.0; see
+  `sas_zero_log.csv`. Genuine missing values already read as NaN.
+* Blood pressure: the mean is taken over readings > 0 for both systolic and
+  diastolic (symmetric rule, disclosed here).
+* Alcohol: ALQ130 is drinks per drinking day, so the average is ALQ130 x
+  drinking days per year / 365 (frequency from ALQ121 category midpoints);
+  never-drinkers are coded 0. Using ALQ130 directly as drinks/day would
+  wrongly exclude about 40% of the sample; the corrected rule excludes
+  about 3-5%.
 
-Requires Python 3.12 with pandas 3.1.1, NumPy 2.5.5, SciPy 1.18.1 and
-scikit-learn 1.9.1 (see `requirements.txt`). The script uses seed 1729
-throughout; rerunning reproduces the published numbers exactly.
+## Strata
 
-### 3. Tables, figures and manuscript
+`0` masked variance strata contain participants from both
+releases (stratum numbers were reused across releases). Analyses must nest
+the stratum within the release (use survey_release + sdmvstra as the
+stratum), or use the release-specific design.
 
-```bash
-python make_tables_figs.py
-python build_manuscript.py
-python build_supplement.py
-```
+## Files
 
-`make_tables_figs.py` also needs matplotlib. The manuscript build needs
-python-docx.
+* `nhanes_masld_cross_sectional.csv` — analysis cohort (one row per participant)
+* `cohort_flow.csv` — flow of exclusions by release
+* `source_manifest.csv` — CDC source file for every component and release
+* `outcome_summary.csv` — counts and weighted/unweighted prevalence
+* `variable_completeness.csv` — missingness per variable and release
+* `data_dictionary.csv` — variable definitions and sources
+* `sas_zero_log.csv` — SAS zeros restored from the 2^-260 reading (if any)
 
-### 4. Transcriptomics
+## Cohort flow
 
-Download `GSE135251_RAW.tar` and the series matrix file from GEO
-(accession GSE135251, Govaere et al., *Sci Transl Med* 2020) into
-`bioinformatics/`, then run the three stage scripts in order. The full
-count matrix (`counts_ensembl.csv`, 34 MB) is regenerated by stage 1 and
-is not stored in this repository; the differential-expression and
-enrichment results (`degs.csv`, `degs_secondary_contrasts.csv`,
-`enrichment.csv`, `phenotype.csv`, `summary.md`) are included.
+                                           stage  all_releases  2017-March2020  2021-2023
+                    All interviewed participants         27493           15560      11933
+Age 20 or older with positive examination weight         14608            8544       6064
+                           Valid CAP measurement         13536            7922       5614
+       Reliable elastography exam (LUAXSTAT = 1)         12671            7395       5276
+     After excluding survey-identified pregnancy         12671            7395       5276
+             After excluding viral hepatitis B/C         11764            6870       4894
+         After excluding significant alcohol use         10447            6344       4103
+   After excluding undetermined metabolic status         10423            6320       4103
 
-## Notes on the data
+## Outcome summary
 
-- NHANES and GEO data are public and de-identified. Participant identifiers
-  (SEQN) are the public NHANES identifiers.
-- The combined 2017–March 2020 NHANES files cannot be split into
-  2017–2018 and 2019–March 2020: the CDC reassigned SEQN in the combined
-  release, so the development sample is the combined pre-pandemic sample
-  as released (see the protocol and `data/README.md` in the study records).
-- The value 5.397605347e-79 in the raw XPT files is the SAS numeric value
-  0 as read by pandas' XPORT reader; it is restored to 0.0 in the build
-  script (see `data/sas_zero_log.csv`).
+survey_release     n  masld  masld_unweighted_pct  masld_weighted_pct  steatosis  steatosis_weighted_pct  masld_with_significant_fibrosis  masld_with_significant_fibrosis_weighted_pct  n_complete_core  masld_complete_core
+  All releases 10423   5974                 57.32               56.07       6039                   56.81                              912                                          8.29            10096                 5796
+2017-March2020  6320   3709                 58.69               56.77       3743                   57.40                              522                                          7.86             6198                 3645
+     2021-2023  4103   2265                 55.20               54.83       2296                   55.77                              390                                          9.06             3898                 2151
